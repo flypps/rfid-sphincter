@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex">
+  <title>{{ title }}</title>
+  <script src="{{url_for('static', filename='jquery-2.2.4.min.js')}}"></script>
+  <script type="text/javascript" src="{{url_for('static', filename='bootstrap.min.js')}}"></script>
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='bootstrap.min.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='bootstrap-table.min.css')}}">
+  <script type='text/javascript' src="{{url_for('static', filename='bootstrap-table.min.js')}}"></script>
+</head>
+<body>
+  <form method="POST" action="/">
+  <div class="container" style="padding: 10px; ">
+    <h1>{{ title }}</h1>
+    <p>Last unknown token is "<b>{{lasttoken}}</b>" from {{minutes}} minutes ago.<br>Add an E-Mail address or name for this token:</p>
+    <input name="user" required>
+    <button type="submit" class="btn btn-success">Activate Token</button>
+  </div>
+</div>
+</form>
+</body>
+</html>

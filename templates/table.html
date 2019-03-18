@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex">
+  <title>{{ title }}</title>
+  <script src="{{url_for('static', filename='jquery-2.2.4.min.js')}}"></script>
+  <script type="text/javascript" src="{{url_for('static', filename='bootstrap.min.js')}}"></script>
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='bootstrap.min.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='bootstrap-table.min.css')}}">
+  <script type='text/javascript' src="{{url_for('static', filename='bootstrap-table.min.js')}}"></script>
+
+  <script type='text/javascript'>
+    $(window).load(function(){
+      var data = {{data|tojson}};
+      var columns = {{columns|tojson}};
+      $(function() {
+        $('#table').bootstrapTable({
+          data: data,
+          columns: columns,
+        });
+      });
+      deletebutton();
+    });
+  </script>
+
+</head>
+<body>
+  <form method="post" action="/">
+  <div class="container" style="padding: 10px; ">
+    <h1>{{title}}</h1>
+    <br/>
+    <div id="toolbar">
+    <button type="submit" id="addtoken" name="addtoken" class="btn btn-success" value="Add Token">Add RFID Token</button>
+  </div>
+    <table
+      id="table"
+      data-toggle="true"
+      data-toolbar="#toolbar"
+      data-search="true"
+      searchOnEnterKey="false"
+      data-show-columns="true"
+      data-pagination="true"
+      data-show-header="true"
+      data-height="500">
+    </table>
+  </div>
+</div>
+</div>
+</form>
+<script>
+btn.onclick = function() {
+    deletebutton();
+    modal.style.display = "block";
+}
+span.onclick = function() {
+    deletebutton();
+    modal.style.display = "none";
+}
+window.onclick = function(event) {
+    deletebutton();
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+</body>
+</html>
